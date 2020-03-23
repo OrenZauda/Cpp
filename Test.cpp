@@ -1,3 +1,14 @@
+/**
+ * An example of how to write unit tests.
+ * Use this as a basis to build a more complete Test.cpp file.
+ * 
+ * IMPORTANT: Please write more tests - the tests here are only for example and are not complete.
+ *
+ * AUTHORS: <Please write your names here>
+ * 
+ * Date: 2020-02
+ */
+
 #include "doctest.h"
 #include "PhoneticFinder.hpp"
 using namespace phonetic;
@@ -5,31 +16,169 @@ using namespace phonetic;
 #include <string>
 using namespace std;
 
-//10 test 
+
+
 TEST_CASE("Test replacement of p and b") {
     string text = "xxx happy yyy";
     CHECK(find(text, "happy") == string("happy"));
-    CHECK(find(text, "hapby") == string("happy"));
     CHECK(find(text, "habby") == string("happy"));
+    CHECK(find(text, "hapby") == string("happy"));
     CHECK(find(text, "habpy") == string("happy"));
     /* Add more checks here */
+    // 2 more cases
+    text = "xxx pub bub yyy";
+    CHECK(find(text, "bub") == string("pub")); //checks its get the first apperance
+    CHECK(find(text, "bup") == string("pub"));
 }
 
 TEST_CASE("Test replacement of lower-case and upper-case") {
-    string text = "Happy xxx yyy";
-    //5 tests, from 1 to 5 in binary
-    CHECK(find(text, "Happy") == string("Happy"));
-    CHECK(find(text, "HAPPy") == string("Happy"));
-    CHECK(find(text, "HAPpy") == string("Happy"));
-    CHECK(find(text, "HAppy") == string("Happy"));
-    CHECK(find(text, "HAppy") == string("Happy"));
-    //another 5, when A is in upper case
-    CHECK(find(text, "hAPPY") == string("Happy"));
-    CHECK(find(text, "hAPPy") == string("Happy"));
-    CHECK(find(text, "hAPpy") == string("Happy"));
-    CHECK(find(text, "HAppY") == string("Happy"));
-    CHECK(find(text, "hAppy") == string("Happy"));
-    //another 5
-    CHECK(find(text, "hAppy") == string("Happy"));
+    string text = "Happi xxx yyy";
+    CHECK(find(text, "happi") == string("Happi")); //0
+    CHECK(find(text, "Happi") == string("Happi")); //16
+    CHECK(find(text, "HAPPI") == string("Happi")); //31
+    CHECK(find(text, "HaPpI") == string("Happi")); //6
     /* Add more checks here */
+    
+    // 28 more cases, 30 overall
+    // assume lower case is 0, upper case is 1
+    CHECK(find(text, "happI") == string("Happi")); // parallel to 1, binary-wise
+    CHECK(find(text, "hapPi") == string("Happi")); // parallel to 2
+    CHECK(find(text, "hapPI") == string("Happi")); // parallel to 3
+    CHECK(find(text, "haPpi") == string("Happi")); // parallel to 4
+    CHECK(find(text, "haPpI") == string("Happi")); // parallel to 5
+    CHECK(find(text, "haPPI") == string("Happi")); // parallel to 7
+    CHECK(find(text, "hAppi") == string("Happi")); // parallel to 8
+    CHECK(find(text, "hAppI") == string("Happi")); // parallel to 9
+    CHECK(find(text, "hApPi") == string("Happi")); // parallel to 10
+    CHECK(find(text, "hApPI") == string("Happi")); // parallel to 11
+    CHECK(find(text, "hAPpi") == string("Happi")); // parallel to 12
+    CHECK(find(text, "hAPpI") == string("Happi")); // parallel to 13
+    CHECK(find(text, "hAPPi") == string("Happi")); // parallel to 14
+    CHECK(find(text, "hAPPI") == string("Happi")); // parallel to 15
+    CHECK(find(text, "HappI") == string("Happi")); // parallel to 17
+    CHECK(find(text, "HapPi") == string("Happi")); // parallel to 18
+    CHECK(find(text, "HapPI") == string("Happi")); // parallel to 19
+    CHECK(find(text, "HaPpi") == string("Happi")); // parallel to 20
+    CHECK(find(text, "HaPpI") == string("Happi")); // parallel to 21
+    CHECK(find(text, "HaPPi") == string("Happi")); // parallel to 22
+    CHECK(find(text, "HaPPI") == string("Happi")); // parallel to 23
+    CHECK(find(text, "HAppi") == string("Happi")); // parallel to 24
+    CHECK(find(text, "HAppI") == string("Happi")); // parallel to 25
+    CHECK(find(text, "HApPi") == string("Happi")); // parallel to 26
+    CHECK(find(text, "HApPI") == string("Happi")); // parallel to 27
+    CHECK(find(text, "HAPpi") == string("Happi")); // parallel to 28
+    CHECK(find(text, "HAPpI") == string("Happi")); // parallel to 29
+    CHECK(find(text, "HAPPi") == string("Happi")); // parallel to 30
+
+
 }
+
+/* Add more test cases here */
+// 3 more cases, 33 overall 
+TEST_CASE("Test replacement of p and f") {
+    string text = "xxx happy yyy";
+    CHECK(find(text, "haffy") == string("happy"));
+    CHECK(find(text, "hapfy") == string("happy"));
+    CHECK(find(text, "hafpy") == string("happy"));
+    
+}
+// 3 more cases, 36 overall
+TEST_CASE("Test replacement of b and f") {
+    string text = "xxx bobcat yyy";
+    CHECK(find(text, "fofcat") == string("bobcat"));
+    CHECK(find(text, "fobcat") == string("bobcat"));
+    CHECK(find(text, "bofcat") == string("bobcat"));
+    
+}
+// 3 more cases, 39 overall
+
+TEST_CASE("Test replacement of v and w") {
+    string text = "xxx wow yyy";
+    CHECK(find(text, "vov") == string("wow"));
+    CHECK(find(text, "vow") == string("wow"));
+    CHECK(find(text, "wov") == string("wow"));
+    
+}
+// 3 more cases, 42 overall
+
+TEST_CASE("Test replacement of g and j ") {
+    string text = "xxx gorgeous yyy";
+    CHECK(find(text, "jorjeous") == string("gorgeous"));
+    CHECK(find(text, "jorgeous") == string("gorgeous"));
+    CHECK(find(text, "gorjeous") == string("gorgeous"));
+    
+}
+// 3 more cases, 45 overall
+
+TEST_CASE("Test replacement of c and k ") {
+    string text = "xxx cycle yyy";
+    CHECK(find(text, "kykle") == string("cycle"));
+    CHECK(find(text, "kycle") == string("cycle"));
+    CHECK(find(text, "cykle") == string("cycle"));
+    
+}
+// 3 more cases, 48 overall
+
+TEST_CASE("Test replacement of q and k ") {
+    string text = "xxx koko yyy";
+    CHECK(find(text, "qoqo") == string("koko"));
+    CHECK(find(text, "qoko") == string("koko"));
+    CHECK(find(text, "koqo") == string("koko"));
+    
+}
+// 3 more cases, 51  overall
+
+TEST_CASE("Test replacement of q and c ") {
+    string text = "xxx cycle yyy";
+    CHECK(find(text, "qyqle") == string("cycle"));
+    CHECK(find(text, "cyqle") == string("cycle"));
+    CHECK(find(text, "qycle") == string("cycle"));
+    
+}
+// 3 more cases, 51  overall
+
+TEST_CASE("Test replacement of q and c ") {
+    string text = "xxx cycle yyy";
+    CHECK(find(text, "qyqle") == string("cycle"));
+    CHECK(find(text, "cyqle") == string("cycle"));
+    CHECK(find(text, "qycle") == string("cycle"));
+    
+}
+// 3 more cases, 54  overall
+
+TEST_CASE("Test replacement of s and z") {
+    string text = "xxx sizer yyy";
+    CHECK(find(text, "ziser") == string("sizer"));
+    CHECK(find(text, "zizer") == string("sizer"));
+    CHECK(find(text, "siser") == string("sizer"));
+    
+}
+// 3 more cases, 57  overall
+
+TEST_CASE("Test replacement of d and t") {
+    string text = "xxx dudu yyy";
+    CHECK(find(text, "tutu") == string("dudu"));
+    CHECK(find(text, "dutu") == string("dudu"));
+    CHECK(find(text, "tudu") == string("dudu"));
+    
+}
+// 3 more cases, 60  overall
+
+TEST_CASE("Test replacement of o and u") {
+    string text = "xxx zoo yyy";
+    CHECK(find(text, "zuu") == string("zoo"));
+    CHECK(find(text, "zuo") == string("zoo"));
+    CHECK(find(text, "zou") == string("zoo"));
+    
+}
+
+// 3 more cases, 63  overall
+
+TEST_CASE("Test replacement of i and y") {
+    string text = "xxx Embiid yyy"; // (last name of nba player)
+    CHECK(find(text, "Embyyd") == string("Embiid"));
+    CHECK(find(text, "Embiyd") == string("Embiid"));
+    CHECK(find(text, "Embyid") == string("Embiid"));
+    
+}
+
