@@ -8,15 +8,15 @@ namespace phonetic{
     
     string find(string text, string word){
         try{
-            if(word=="happ"){
+            if(text.find(word)==string::npos){
                 throw (word+"is not a full word in the sentence");
             }
-            return "";
+            return word;
         }
         catch(string s){
             cout<<"not good"<<endl;
         }
-    return "";
     
+    return word;
 }
 }

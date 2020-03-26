@@ -10,6 +10,7 @@
  */
 
 #include "doctest.h"
+#include <iostream>
 #include "PhoneticFinder.hpp"
 using namespace phonetic;
 
@@ -74,111 +75,142 @@ TEST_CASE("Test replacement of lower-case and upper-case") {
 }
 
 /* Add more test cases here */
-// 3 more cases, 33 overall 
+// 6 more cases, 36 overall 
 TEST_CASE("Test replacement of p and f") {
     string text = "xxx happy yyy";
     CHECK(find(text, "haffy") == string("happy"));
     CHECK(find(text, "hapfy") == string("happy"));
     CHECK(find(text, "hafpy") == string("happy"));
-    
+    text = "xxx people yyy";
+    CHECK(find(text, "feofle") == string("people"));
+    CHECK(find(text, "feople") == string("people"));
+    CHECK(find(text, "peofle") == string("people"));
+
 }
-// 3 more cases, 36 overall
+// 6 more cases, 42 overall
 TEST_CASE("Test replacement of b and f") {
     string text = "xxx bobcat yyy";
     CHECK(find(text, "fofcat") == string("bobcat"));
     CHECK(find(text, "fobcat") == string("bobcat"));
     CHECK(find(text, "bofcat") == string("bobcat"));
-    
+    text = "xxx fof yyy";
+    CHECK(find(text, "bob") == string("fof"));
+    CHECK(find(text, "bof") == string("fof"));
+    CHECK(find(text, "fob") == string("fof"));
 }
-// 3 more cases, 39 overall
+// 6 more cases, 48 overall
 
 TEST_CASE("Test replacement of v and w") {
     string text = "xxx wow yyy";
     CHECK(find(text, "vov") == string("wow"));
     CHECK(find(text, "vow") == string("wow"));
     CHECK(find(text, "wov") == string("wow"));
-    
+    text = "xxx vivid yyy";
+    CHECK(find(text, "wiwid") == string("vivid"));
+    CHECK(find(text, "wivid") == string("vivid"));
+    CHECK(find(text, "viwid") == string("vivid"));
+
 }
-// 3 more cases, 42 overall
+// 6 more cases, 52 overall
 
 TEST_CASE("Test replacement of g and j ") {
     string text = "xxx gorgeous yyy";
     CHECK(find(text, "jorjeous") == string("gorgeous"));
     CHECK(find(text, "jorgeous") == string("gorgeous"));
     CHECK(find(text, "gorjeous") == string("gorgeous"));
-    
+    text = "xxx jojo yyy";
+    CHECK(find(text, "gogo") == string("jojo"));
+    CHECK(find(text, "jogo") == string("jojo"));
+    CHECK(find(text, "gojo") == string("jojo"));
 }
-// 3 more cases, 45 overall
+// 6 more cases, 58 overall
 
 TEST_CASE("Test replacement of c and k ") {
     string text = "xxx cycle yyy";
     CHECK(find(text, "kykle") == string("cycle"));
     CHECK(find(text, "kycle") == string("cycle"));
     CHECK(find(text, "cykle") == string("cycle"));
-    
+    text = "xxx kiki yyy";
+    CHECK(find(text, "cici") == string("kiki"));
+    CHECK(find(text, "kici") == string("kiki"));
+    CHECK(find(text, "ciki") == string("kiki"));
 }
-// 3 more cases, 48 overall
+// 6 more cases, 64 overall
 
 TEST_CASE("Test replacement of q and k ") {
     string text = "xxx koko yyy";
     CHECK(find(text, "qoqo") == string("koko"));
     CHECK(find(text, "qoko") == string("koko"));
     CHECK(find(text, "koqo") == string("koko"));
-    
+    text = "xxx qq yyy";
+    CHECK(find(text, "kk") == string("qq"));
+    CHECK(find(text, "qk") == string("qq"));
+    CHECK(find(text, "kq") == string("qq"));
 }
-// 3 more cases, 51  overall
+// 6 more cases, 70  overall
 
 TEST_CASE("Test replacement of q and c ") {
     string text = "xxx cycle yyy";
     CHECK(find(text, "qyqle") == string("cycle"));
     CHECK(find(text, "cyqle") == string("cycle"));
     CHECK(find(text, "qycle") == string("cycle"));
-    
-}
-// 3 more cases, 51  overall
+    text = "xxx qq yyy";
+    CHECK(find(text, "cc") == string("qq"));
+    CHECK(find(text, "cq") == string("qq"));
+    CHECK(find(text, "qc") == string("qq"));
 
-TEST_CASE("Test replacement of q and c ") {
-    string text = "xxx cycle yyy";
-    CHECK(find(text, "qyqle") == string("cycle"));
-    CHECK(find(text, "cyqle") == string("cycle"));
-    CHECK(find(text, "qycle") == string("cycle"));
-    
 }
-// 3 more cases, 54  overall
+
+// 6 more cases, 76 overall
 
 TEST_CASE("Test replacement of s and z") {
-    string text = "xxx sizer yyy";
-    CHECK(find(text, "ziser") == string("sizer"));
-    CHECK(find(text, "zizer") == string("sizer"));
-    CHECK(find(text, "siser") == string("sizer"));
-    
+    string text = "xxx sister yyy";
+    CHECK(find(text, "zizter") == string("sister"));
+    CHECK(find(text, "zister") == string("sister"));
+    CHECK(find(text, "sizter") == string("sister"));
+    text = "xxx zozo yyy";
+    CHECK(find(text, "soso") == string("zozo"));
+    CHECK(find(text, "sozo") == string("zozo"));
+    CHECK(find(text, "zoso") == string("zozo"));
 }
-// 3 more cases, 57  overall
+// 6 more cases, 82  overall
 
 TEST_CASE("Test replacement of d and t") {
     string text = "xxx dudu yyy";
     CHECK(find(text, "tutu") == string("dudu"));
     CHECK(find(text, "dutu") == string("dudu"));
     CHECK(find(text, "tudu") == string("dudu"));
-    
+    text = "xxx thoughts yyy";
+    CHECK(find(text, "dhoughds") == string("thoughts"));
+    CHECK(find(text, "dhoughts") == string("thoughts"));
+    CHECK(find(text, "thoughds") == string("thoughts"));
 }
-// 3 more cases, 60  overall
+// 6 more cases, 88  overall
 
 TEST_CASE("Test replacement of o and u") {
     string text = "xxx zoo yyy";
     CHECK(find(text, "zuu") == string("zoo"));
     CHECK(find(text, "zuo") == string("zoo"));
     CHECK(find(text, "zou") == string("zoo"));
-    
+    text = "xxx queue yyy";
+    CHECK(find(text, "qoeoe") == string("queue"));
+    CHECK(find(text, "qoeue") == string("queue"));
+    CHECK(find(text, "queoe") == string("queue"));
 }
 
-// 3 more cases, 63  overall
+// 6 more cases, 94  overall
 
 TEST_CASE("Test replacement of i and y") {
     string text = "xxx Embiid yyy"; // (last name of nba player)
     CHECK(find(text, "Embyyd") == string("Embiid"));
     CHECK(find(text, "Embiyd") == string("Embiid"));
     CHECK(find(text, "Embyid") == string("Embiid"));
+    text = "xxx yoyo yyy";
+    CHECK(find(text, "ioio") == string("yoyo"));
+    CHECK(find(text, "yoio") == string("yoyo"));
+    CHECK(find(text, "ioyo") == string("yoyo"));
     
 }
+
+
 
