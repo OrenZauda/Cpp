@@ -228,7 +228,7 @@ gen(arr,index, word);
         
         try{
             if(word==""){
-                throw "word not found";
+                throw "empty word";
             }
             
             for(int i=0;i<all_options.size();i++){
