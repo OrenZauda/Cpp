@@ -227,6 +227,9 @@ gen(arr,index, word);
         gen(all_options,index,word);
         
         try{
+            if(word==""){
+                throw "word not found";
+            }
             
             for(int i=0;i<all_options.size();i++){
                 int pos=text.find(all_options[i]);
