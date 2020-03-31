@@ -6,11 +6,13 @@
 using namespace std;
 
 namespace phonetic{
-    void gen(vector <string> &arr,int index,string word){ 
 
+    void gen(vector <string> &arr,int index,string word){ 
+ 
 
     if(index>=word.length()){
         arr.push_back(word);
+        
         return; }
 
     if(word.at(index)=='p'){
@@ -207,13 +209,7 @@ namespace phonetic{
 index++; 
 gen(arr,index, word);
     
-}
-
-
-
-
-    // function to generate all the variation of the word
-    
+}    
     
     string find(string Text, string Word){
 

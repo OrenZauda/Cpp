@@ -1,9 +1,10 @@
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 namespace phonetic{
-   
-    string find(string text, string word);
     void gen(vector<string>  &arr,int index,string word);
+    string find(string text, string word);
+    
 }

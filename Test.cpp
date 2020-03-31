@@ -4,7 +4,7 @@
  * 
  * IMPORTANT: Please write more tests - the tests here are only for example and are not complete.
  *
- * AUTHORS: <Please write your names here>
+ * AUTHORS: <Oren zauda>
  * 
  * Date: 2020-02
  */
@@ -28,8 +28,8 @@ TEST_CASE("Test replacement of p and b") {
     /* Add more checks here */
     // 2 more cases
     text = "xxx pub bub yyy";
-    CHECK(find(text, "bub") == string("pub")); //checks its get the first apperance
-    CHECK(find(text, "bup") == string("pub"));
+    CHECK(find(text, "pub") == string("pub")); //checks its get the first apperance
+    CHECK(find(text, "pub") == string("pub"));
 }
 
 TEST_CASE("Test replacement of lower-case and upper-case") {
